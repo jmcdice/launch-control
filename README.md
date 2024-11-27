@@ -1,27 +1,59 @@
 # Launch Control
 
-AI-powered deployment management system.
+Launch Control is a Python-based application that provides real-time audio capture and transcription using Google Chirp and Gemini API. It's designed for voice-controlled systems, automated meeting notes, and other applications requiring reliable audio transcription.
 
-## Installation
+## Features
 
+- Real-time radio capture from configurable input devices
+- Asynchronous processing using `asyncio`
+- Integration with Google Chirp and Gemini API for transcription
+- Configurable audio settings (sample rate, channels, thresholds)
+- Comprehensive logging system
+- Secure configuration management via environment variables
+
+## Quick Start
+
+1. Clone the repository:
 ```bash
-# Create and activate virtual environment
-python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-
-# Install package
-pip install -e ".[dev]"
+git clone https://github.com/jmcdice/launch-control.git
+cd launch-control
 ```
 
-## Usage
-
+2. Set up your environment:
 ```bash
-# Start receiver
-launch-control receive --debug
-
-# Start transmitter with specific personas
-launch-control transmit --persona the_dude
-
-# Start both components
-launch-control start --persona the_dude --debug
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e .
 ```
+
+3. Configure your environment:
+```bash
+gcloud init
+gcloud auth application-default login
+cp .env.example .env
+# Edit .env with your API keys and settings
+```
+
+4. Run the application:
+```bash
+bash run.sh
+```
+
+## Requirements
+
+- Python 3.7+
+- Google Cloud Account 
+- Gemini API Key
+- Virtual Environment (venv)
+
+## Configuration
+
+Key environment variables in `.env`:
+
+- `TRANSCRIPTION_SERVICE_TYPE`: Choose between 'google-chirp' or 'openai-whisper'
+- `GEMINI_API_KEY`: Your Gemini API key
+- `GOOGLE_CLOUD_PROJECT`: Your Google Cloud project ID
+- `AUDIO_DEVICE_INDEX`: Index of your audio input device
+- `SAMPLE_RATE`: Audio sample rate (default: 44100)
+- `CHANNELS`: Number of audio channels (default: 1)
+
