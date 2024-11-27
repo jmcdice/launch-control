@@ -1,6 +1,6 @@
 # Launch Control
 
-Launch Control is a Python-based application that provides real-time audio capture and transcription using Google Chirp and Gemini API. It's designed for voice-controlled systems, automated meeting notes, and other applications requiring reliable audio transcription.
+Launch Control is a Python-based application that provides real-time radio capture and transcription using Google Chirp and Gemini API. 
 
 ## Features
 
